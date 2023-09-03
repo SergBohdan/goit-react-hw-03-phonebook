@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { List, ListBtn, ListItem } from './ContactListStyled';
+import { ClearBtn, List, ListBtn, ListItem } from './ContactListStyled';
 
-export const ContactList = ({ contacts, onDeleteContact }) => (
+export const ContactList = ({ contacts, onDeleteContact, onClearContacts }) => (
   <List>
     {contacts.map(contact => (
       <ListItem key={contact.id}>
@@ -12,6 +12,7 @@ export const ContactList = ({ contacts, onDeleteContact }) => (
         </ListBtn>
       </ListItem>
     ))}
+    <ClearBtn onClick = {onClearContacts}>Clear contacts</ClearBtn>
   </List>
 );
 

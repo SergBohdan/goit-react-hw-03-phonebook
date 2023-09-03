@@ -21,5 +21,10 @@ export const ListBtn = styled.button`
   border-radius: 8px;
   background-color: yellow;
   color: brown;
+`;
 
+export const ClearBtn = styled.button`
+  border-radius: 8px;
+  background-color: #eb4034;
+  color: #ffffff;
 `;
