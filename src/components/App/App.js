@@ -5,7 +5,6 @@ import { ContactFilter } from 'components/ContactFilter/ContactFilter';
 import { ContactList } from 'components/ContactList/ContactList';
 import { GlobalStyle } from 'components/GlobalStyles';
 
-
 export class App extends Component {
   state = {
     contacts: [
@@ -33,11 +32,15 @@ export class App extends Component {
   addContact = (name, number) => {
     const newContact = {
       id: nanoid(),
-      name: name,
-      number: number,
+      name,
+      number,
     };
 
-    if (this.state.contacts.some(contact => contact.name === name).toLowerCase()) {
+    if (
+      this.state.contacts.some(
+        contact => contact.name.toLowerCase() === name.toLowerCase()
+      )
+    ) {
       alert(`${name} is already in contacts.`);
       return;
     }
@@ -53,7 +56,7 @@ export class App extends Component {
     }));
   };
 
-  clearContacts = () =>{
+  clearContacts = () => {
     this.setState({
       contacts: [
         { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
@@ -61,9 +64,8 @@ export class App extends Component {
         { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
         { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
       ],
-     
-    })
-  }
+    });
+  };
 
   handleFilterChange = evt => {
     this.setState({ filter: evt.target.value });
@@ -83,8 +85,15 @@ export class App extends Component {
         <h1>Phonebook</h1>
         <ContactForm onAddContact={this.addContact} />
         <h2>Contacts</h2>
-        <ContactFilter filter={this.state.filter} onChange={this.handleFilterChange} />
-        <ContactList contacts={filteredContacts} onDeleteContact={this.deleteContact} onClearContacts = {this.clearContacts}/>
+        <ContactFilter
+          filter={this.state.filter}
+          onChange={this.handleFilterChange}
+        />
+        <ContactList
+          contacts={filteredContacts}
+          onDeleteContact={this.deleteContact}
+          onClearContacts={this.clearContacts}
+        />
         <GlobalStyle />
       </div>
     );

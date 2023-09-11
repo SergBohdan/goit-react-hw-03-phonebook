@@ -49,4 +49,4 @@ export class ContactForm extends Component {
       </FormStyle>
     );
   }
-};
+}
